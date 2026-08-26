@@ -7,6 +7,16 @@ import { Header } from '@components/layout/Header'
 import { Footer } from '@components/layout/Footer'
 import { Home } from './pages/Home'
 import { AboutUs } from './pages/AboutUs'
+import { Volunteers } from './pages/Volunteers'
+import { UFABC } from './pages/Universities/UFABC'
+import { UNIFESP } from './pages/Universities/UNIFESP'
+import { IF } from './pages/Universities/IF'
+import { UNESP } from './pages/Universities/UNESP'
+import { UNICAMP } from './pages/Universities/UNICAMP'
+import { UFSCAR } from './pages/Universities/UFSCAR'
+import { ITA } from './pages/Universities/ITA'
+import { USP } from './pages/Universities/USP'
+import { Palestras } from './pages/AboutUs/Palestras'
 
 export default function App() {
   useEffect(() => {
@@ -31,6 +41,16 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/quem-somos" element={<AboutUs />} />
+          <Route path="/voluntarios" element={<Volunteers />} />
+          <Route path="/palestras" element={<Palestras />} />
+          <Route path="/universidades/ufabc" element={<UFABC />} />
+          <Route path="/universidades/unifesp" element={<UNIFESP />} />
+          <Route path="/universidades/if" element={<IF />} />
+          <Route path="/universidades/unesp" element={<UNESP />} />
+          <Route path="/universidades/unicamp" element={<UNICAMP />} />
+          <Route path="/universidades/ufscar" element={<UFSCAR />} />
+          <Route path="/universidades/ita" element={<ITA />} />
+          <Route path="/universidades/usp" element={<USP />} />
         </Routes>
         <Footer />
       </div>

@@ -6,12 +6,12 @@ import { ArrowRight } from 'lucide-react'
 
 export function Hero() {
   const { scrollY } = useScroll()
-  // Parallax effect: moves slower than scroll (300px translation per 1000px scrolled)
+  // Efeito Parallax: move mais devagar que a rolagem da página (300px de translação a cada 1000px rolados)
   const yParallax = useTransform(scrollY, [0, 1000], [0, 300])
 
   return (
     <div className="relative w-full">
-      {/* Decorative Branch (Top Right Edge of Screen) */}
+      {/* Ramo Decorativo (Borda superior direita da tela) */}
       <div className="absolute top-48 md:top-64 right-0 translate-x-1/2 translate-y-12 md:translate-y-24 w-80 md:w-[36rem] aspect-square pointer-events-none -z-10">
         <motion.img 
           initial={{ opacity: 0, rotate: 10, scale: 0.8 }}
@@ -30,8 +30,15 @@ export function Hero() {
         initial={{ x: -30, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="max-w-xl flex flex-col gap-10"
+        className="max-w-xl flex flex-col gap-10 relative"
       >
+        {/* Folha Decorativa (Topo esquerdo) */}
+        <img 
+          src="/leaf-top.png" 
+          alt="Folha decorativa" 
+          className="absolute -top-16 -left-16 w-20 md:w-24 h-auto object-contain pointer-events-none z-10 rotate-90"
+        />
+
         <h1 className="text-6xl md:text-7xl font-extrabold text-primary leading-[1.15]">
           Informar.<br/>
           <span className="text-secondary">Empoderar.</span><br/>
@@ -53,20 +60,20 @@ export function Hero() {
         className="flex-1 w-full max-w-lg relative"
       >
 
-        {/* Background decorative dots */}
+        {/* Pontilhados decorativos ao fundo */}
         <div className="absolute -top-8 -right-1 z-10">
           <DotGrid />
         </div>
         
-        {/* Blob shape */}
+        {/* Forma de mancha (Blob) */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-green-50/50 rounded-full blur-3xl -z-10"></div>
-        {/* Logo Illustration */}
+        {/* Ilustração principal (Logo) */}
         <motion.div 
           className="relative w-full aspect-square flex items-center justify-center z-20 mt-8 md:mt-0"
           animate={{ y: [0, -15, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         >
-          {/* Subtle circular track behind logo to match mockup */}
+          {/* Círculo sutil atrás da logo para combinar com o design */}
           <div className="absolute inset-4 rounded-full border border-green-200/50 -z-10"></div>
           
           <img 

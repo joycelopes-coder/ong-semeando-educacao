@@ -20,7 +20,7 @@ export function HowWeAct() {
       icon: <Monitor size={24} className="text-white" />,
       title: "Divulgação",
       desc: "Estratégias de estudo, bolsas para cursinhos e plataformas de apoio.",
-      bg: "bg-primary"
+      bg: "bg-tertiary"
     }
   ]
 

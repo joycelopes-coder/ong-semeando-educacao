@@ -14,8 +14,8 @@ export function Header() {
       href: '/quem-somos',
       subItems: [
         { label: 'Quem Somos', href: '/quem-somos' },
-        { label: 'Voluntários', href: '/#voluntarios' },
-        { label: 'Palestras Realizadas', href: '/#palestras' },
+        { label: 'Voluntários', href: '/voluntarios' },
+        { label: 'Palestras Realizadas', href: '/palestras' },
         { label: 'Semeando na Mídia', href: '/#midia' },
         { label: 'Apoiadores', href: '/#apoiadores' }
       ]
@@ -24,14 +24,14 @@ export function Header() {
       label: 'Universidades', 
       href: '/#universidades',
       subItems: [
-        { label: 'UFABC', href: '/#ufabc' },
-        { label: 'UNIFESP', href: '/#unifesp' },
-        { label: 'IF', href: '/#if' },
-        { label: 'UFSCAR', href: '/#ufscar' },
-        { label: 'ITA', href: '/#ita' },
-        { label: 'USP', href: '/#usp' },
-        { label: 'UNESP', href: '/#unesp' },
-        { label: 'UNICAMP', href: '/#unicamp' }
+        { label: 'UFABC', href: '/universidades/ufabc' },
+        { label: 'UNIFESP', href: '/universidades/unifesp' },
+        { label: 'IF', href: '/universidades/if' },
+        { label: 'UFSCAR', href: '/universidades/ufscar' },
+        { label: 'ITA', href: '/universidades/ita' },
+        { label: 'USP', href: '/universidades/usp' },
+        { label: 'UNESP', href: '/universidades/unesp' },
+        { label: 'UNICAMP', href: '/universidades/unicamp' }
       ]
     },
     { 
