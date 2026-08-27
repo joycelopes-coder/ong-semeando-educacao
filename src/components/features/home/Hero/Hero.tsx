@@ -34,12 +34,12 @@ export function Hero() {
       >
         {/* Folha Decorativa (Topo esquerdo) */}
         <img 
-          src="/leaf-top.png" 
+          src="/leaf-top-new.png" 
           alt="Folha decorativa" 
-          className="absolute -top-16 -left-16 w-20 md:w-24 h-auto object-contain pointer-events-none z-10 rotate-90"
+          className="absolute -top-16 -left-20 w-32 md:w-40 h-auto object-contain pointer-events-none z-10 "
         />
 
-        <h1 className="text-6xl md:text-7xl font-extrabold text-primary leading-[1.15]">
+        <h1 className="text-6xl md:text-8xl font-extrabold text-primary leading-[1.15]">
           Informar.<br/>
           <span className="text-secondary">Empoderar.</span><br/>
           <span className="text-tertiary">Engajar.</span>

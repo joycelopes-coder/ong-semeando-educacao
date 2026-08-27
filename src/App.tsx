@@ -8,6 +8,7 @@ import { Footer } from '@components/layout/Footer'
 import { Home } from './pages/Home'
 import { AboutUs } from './pages/AboutUs'
 import { Volunteers } from './pages/Volunteers'
+import { Universities } from './pages/Universities'
 import { UFABC } from './pages/Universities/UFABC'
 import { UNIFESP } from './pages/Universities/UNIFESP'
 import { IF } from './pages/Universities/IF'
@@ -43,6 +44,7 @@ export default function App() {
           <Route path="/quem-somos" element={<AboutUs />} />
           <Route path="/voluntarios" element={<Volunteers />} />
           <Route path="/palestras" element={<Palestras />} />
+          <Route path="/universidades" element={<Universities />} />
           <Route path="/universidades/ufabc" element={<UFABC />} />
           <Route path="/universidades/unifesp" element={<UNIFESP />} />
           <Route path="/universidades/if" element={<IF />} />

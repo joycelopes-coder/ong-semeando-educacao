@@ -14,7 +14,7 @@ export function UniversityLayout({ title, logo, mainImage, children }: Universit
   return (
     <main className="w-full flex flex-col flex-1 pb-16 bg-gray-50/30">
       {/* Hero Section */}
-      <div className="relative w-full h-[40vh] min-h-[300px] max-h-[400px] bg-primary flex items-center justify-center overflow-hidden">
+      <div className="relative w-full h-[50vh] min-h-[400px] max-h-[500px] bg-primary flex items-center justify-center overflow-hidden -mt-[88px] pt-[88px]">
         {mainImage && (
           <img 
             src={mainImage} 
@@ -42,7 +42,7 @@ export function UniversityLayout({ title, logo, mainImage, children }: Universit
 
       <div className="max-w-4xl mx-auto w-full px-6 -mt-10 relative z-20">
         <Link 
-          to="/#universidades" 
+          to="/universidades" 
           className="inline-flex items-center gap-2 text-sm font-medium text-white bg-black/20 hover:bg-black/40 backdrop-blur-md px-4 py-2 rounded-full transition-colors mb-6"
         >
           <ArrowLeft size={16} />

@@ -43,7 +43,7 @@ export function Header() {
     },
     { 
       label: 'Universidades', 
-      href: '/#universidades',
+      href: '/universidades',
       subItems: [
         { label: 'UFABC', href: '/universidades/ufabc' },
         { label: 'UNIFESP', href: '/universidades/unifesp' },
