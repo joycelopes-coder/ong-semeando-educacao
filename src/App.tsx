@@ -10,6 +10,7 @@ import { AboutUs } from './pages/AboutUs'
 import { Volunteers } from './pages/Volunteers'
 import { Universities } from './pages/Universities'
 import { UFABC } from './pages/Universities/UFABC'
+import { CursosTecnicos } from './pages/CursosTecnicos'
 import { UNIFESP } from './pages/Universities/UNIFESP'
 import { IF } from './pages/Universities/IF'
 import { UNESP } from './pages/Universities/UNESP'
@@ -44,6 +45,7 @@ export default function App() {
           <Route path="/quem-somos" element={<AboutUs />} />
           <Route path="/voluntarios" element={<Volunteers />} />
           <Route path="/palestras" element={<Palestras />} />
+          <Route path="/curso-tecnico" element={<CursosTecnicos />} />
           <Route path="/universidades" element={<Universities />} />
           <Route path="/universidades/ufabc" element={<UFABC />} />
           <Route path="/universidades/unifesp" element={<UNIFESP />} />

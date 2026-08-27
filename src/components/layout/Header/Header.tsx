@@ -34,7 +34,6 @@ export function Header() {
       label: 'Quem Somos', 
       href: '/quem-somos',
       subItems: [
-        { label: 'Quem Somos', href: '/quem-somos' },
         { label: 'Voluntários', href: '/voluntarios' },
         { label: 'Palestras Realizadas', href: '/palestras' },
         { label: 'Semeando na Mídia', href: '/#midia' },
@@ -57,10 +56,10 @@ export function Header() {
     },
     { 
       label: 'Curso Técnico', 
-      href: '/#curso-tecnico',
+      href: '/curso-tecnico',
       subItems: [
-        { label: 'Senai', href: '/#senai' },
-        { label: 'Etec', href: '/#etec' }
+        { label: 'Senai', href: '/curso-tecnico#senai' },
+        { label: 'Etec', href: '/curso-tecnico#etec' }
       ]
     },
     { 
