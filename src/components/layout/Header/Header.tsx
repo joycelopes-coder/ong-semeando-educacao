@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@components/ui/Button'
 import { ArrowRight, ChevronDown } from 'lucide-react'
@@ -6,6 +6,27 @@ import { Link, useLocation } from 'react-router-dom'
 
 export function Header() {
   const location = useLocation()
+  const [hidden, setHidden] = useState(false)
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY <= 100) {
+        setHidden(false);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 150) {
+        setHidden(true);
+      } else if (currentScrollY < lastScrollY) {
+        setHidden(false);
+      }
+      
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   
   const navItems = [
     { label: 'Início', href: '/' },
@@ -55,12 +76,19 @@ export function Header() {
   ]
 
   return (
-    <div className="w-full px-4 md:px-8 sticky top-6 z-50">
-      <motion.header 
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        className="max-w-7xl mx-auto bg-white shadow-lg rounded-full"
-      >
+    <>
+      <div className="h-[88px] w-full" />
+      <div className="fixed top-0 pt-6 left-0 right-0 w-full px-4 md:px-8 z-50 pointer-events-none">
+        <motion.header 
+          variants={{
+            visible: { y: 0, opacity: 1 },
+            hidden: { y: "-150%", opacity: 1 }
+          }}
+          initial="visible"
+          animate={hidden ? "hidden" : "visible"}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          className="max-w-7xl mx-auto bg-white shadow-lg rounded-full pointer-events-auto"
+        >
         <div className="px-6 py-3 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
             <img src="/logo.png" alt="Semeando Educação Logo" className="h-10 w-auto object-contain" />
@@ -109,5 +137,6 @@ export function Header() {
         </div>
       </motion.header>
     </div>
+    </>
   )
 }
