@@ -89,9 +89,9 @@ export function Footer() {
               </div>
 
               {/* Redes Sociais */}
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col items-center gap-4">
                 <h3 className="font-bold text-gray-800">Redes Sociais</h3>
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col items-center gap-3">
                   <a href="#" className="text-primary hover:text-primary-hover transition-colors"><FaInstagram size={20} /></a>
                   <a href="#" className="text-primary hover:text-primary-hover transition-colors"><FaYoutube size={20} /></a>
                   <a href="#" className="text-primary hover:text-primary-hover transition-colors"><FaTiktok size={20} /></a>
@@ -115,10 +115,17 @@ export function Footer() {
           </div>
 
           {/* Bottom Bar */}
-          <div className="relative z-20 bg-primary py-4 text-center px-4 w-full">
+          <div className="relative z-20 bg-primary py-4 text-center px-4 w-full flex flex-col items-center justify-center gap-2">
             <p className="text-white text-sm font-medium">
               {`© ${new Date().getFullYear()} Semeando Educação. Todos os direitos reservados.`}
             </p>
+            <div className="flex items-center justify-center text-white/80 text-xs font-medium tracking-wide uppercase">
+              <span>Desenvolvido por</span>
+              <a href="https://luizsant.dev/" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-white flex items-center gap-2 transition-colors group">
+                <span className="underline decoration-white/30 underline-offset-2 group-hover:decoration-white">LUIZ SANT</span>
+                <img src="/luizsant-logo.png" alt="Luiz Sant Logo" className="w-5 h-5 object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity" />
+              </a>
+            </div>
           </div>
         </footer>
       </motion.div>

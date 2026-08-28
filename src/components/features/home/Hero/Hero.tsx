@@ -68,11 +68,16 @@ export function Hero() {
         {/* Forma de mancha (Blob) */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-green-50/50 rounded-full blur-3xl -z-10"></div>
         {/* Ilustração principal (Logo) */}
-        <motion.div 
-          className="relative w-full aspect-square flex items-center justify-center z-20 mt-8 md:mt-0"
-          animate={{ y: [0, -15, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        >
+        <motion.div className="relative w-full aspect-square flex items-center justify-center z-20 mt-8 md:mt-0">
+          {/* Imagem de colagem ao fundo */}
+          <div className="absolute inset-0 flex items-center justify-center -z-10">
+            <img 
+              src="/studantes.png" 
+              alt="Colagem de fundo" 
+              className="w-[120%] h-[120%] max-w-none object-contain"
+            />
+          </div>
+
           {/* Círculo sutil atrás da logo para combinar com o design */}
           <div className="absolute inset-4 rounded-full border border-green-200/50 -z-10"></div>
           
