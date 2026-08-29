@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Wrench, Search, Users, Clock, ArrowRight, ExternalLink } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 export function CursosTecnicos() {
   useEffect(() => {
@@ -37,7 +38,7 @@ export function CursosTecnicos() {
       fullName: 'Escola Técnica Estadual Centro Paula Souza',
       campus: 'Estão distribuídos por toda São Paulo. Você pode conferir todos eles clicando aqui.',
       logo: '/curso-tecnico/etec.png',
-      link: 'https://www.cps.sp.gov.br/etecs/'
+      link: '/curso-tecnico/etec'
     },
     {
       id: 'senai',
@@ -45,7 +46,7 @@ export function CursosTecnicos() {
       fullName: 'Serviço Nacional de Aprendizagem Industrial',
       campus: 'Estão distribuídos por toda São Paulo. Você pode conferir todos eles clicando aqui.',
       logo: '/curso-tecnico/senai.png',
-      link: 'https://www.sp.senai.br/cursos/18/cursos-tecnicos?menu=31&todas=1'
+      link: '/curso-tecnico/senai'
     }
   ]
 
@@ -122,11 +123,9 @@ export function CursosTecnicos() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {escolas.map((escola) => (
-            <a 
+            <Link 
               id={escola.id}
-              href={escola.link}
-              target="_blank"
-              rel="noopener noreferrer"
+              to={escola.link}
               key={escola.id} 
               className="group flex flex-col bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             >
@@ -147,11 +146,11 @@ export function CursosTecnicos() {
                 </p>
                 
                 <div className="mt-auto flex items-center justify-between text-sm font-bold text-tertiary">
-                  Acessar site oficial
-                  <ExternalLink size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  Saiba mais
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

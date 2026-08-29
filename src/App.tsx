@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 // @ts-ignore
 import Lenis from 'lenis'
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { Header } from '@components/layout/Header'
 import { Footer } from '@components/layout/Footer'
 import { Home } from './pages/Home'
@@ -19,6 +19,17 @@ import { UFSCAR } from './pages/Universities/UFSCAR'
 import { ITA } from './pages/Universities/ITA'
 import { USP } from './pages/Universities/USP'
 import { Palestras } from './pages/AboutUs/Palestras'
+import { Senai } from './pages/Senai'
+import { Etec } from './pages/Etec'
+import { Blog } from './pages/Blog'
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 
 export default function App() {
   useEffect(() => {
@@ -35,6 +46,7 @@ export default function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen flex flex-col relative overflow-hidden">
         {/* Background shape */}
         <div className="absolute top-0 right-0 w-[40vw] h-[80vh] bg-[#eaf4eb] rounded-bl-[10rem] -z-20"></div>
@@ -46,6 +58,8 @@ export default function App() {
           <Route path="/voluntarios" element={<Volunteers />} />
           <Route path="/palestras" element={<Palestras />} />
           <Route path="/curso-tecnico" element={<CursosTecnicos />} />
+          <Route path="/curso-tecnico/senai" element={<Senai />} />
+          <Route path="/curso-tecnico/etec" element={<Etec />} />
           <Route path="/universidades" element={<Universities />} />
           <Route path="/universidades/ufabc" element={<UFABC />} />
           <Route path="/universidades/unifesp" element={<UNIFESP />} />
@@ -55,6 +69,7 @@ export default function App() {
           <Route path="/universidades/ufscar" element={<UFSCAR />} />
           <Route path="/universidades/ita" element={<ITA />} />
           <Route path="/universidades/usp" element={<USP />} />
+          <Route path="/blog" element={<Blog />} />
         </Routes>
         <Footer />
       </div>

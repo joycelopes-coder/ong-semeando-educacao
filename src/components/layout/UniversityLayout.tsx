@@ -8,9 +8,11 @@ interface UniversityLayoutProps {
   logo?: string
   mainImage?: string
   children: React.ReactNode
+  backHref?: string
+  backLabel?: string
 }
 
-export function UniversityLayout({ title, logo, mainImage, children }: UniversityLayoutProps) {
+export function UniversityLayout({ title, logo, mainImage, children, backHref = "/universidades", backLabel = "Voltar para Universidades" }: UniversityLayoutProps) {
   return (
     <main className="w-full flex flex-col flex-1 pb-16 bg-gray-50/30">
       {/* Hero Section */}
@@ -42,11 +44,11 @@ export function UniversityLayout({ title, logo, mainImage, children }: Universit
 
       <div className="max-w-4xl mx-auto w-full px-6 -mt-10 relative z-20">
         <Link 
-          to="/universidades" 
+          to={backHref} 
           className="inline-flex items-center gap-2 text-sm font-medium text-white bg-black/20 hover:bg-black/40 backdrop-blur-md px-4 py-2 rounded-full transition-colors mb-6"
         >
           <ArrowLeft size={16} />
-          Voltar para Universidades
+          {backLabel}
         </Link>
 
         <div className="bg-white rounded-3xl shadow-sm border border-gray-100 p-8 md:p-12">

@@ -53,12 +53,7 @@ export function Hero() {
         </div>
       </motion.div>
 
-      <motion.div 
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="flex-1 w-full max-w-lg relative"
-      >
+      <div className="flex-1 w-full max-w-lg relative">
 
         {/* Pontilhados decorativos ao fundo */}
         <div className="absolute -top-8 -right-1 z-10">
@@ -78,16 +73,9 @@ export function Hero() {
             />
           </div>
 
-          {/* Círculo sutil atrás da logo para combinar com o design */}
-          <div className="absolute inset-4 rounded-full border border-green-200/50 -z-10"></div>
-          
-          <img 
-            src="/hero-logo.png" 
-            alt="Semeando Educação Ilustração" 
-            className="w-10/12 h-auto object-contain drop-shadow-2xl"
-          />
+
         </motion.div>
-      </motion.div>
+      </div>
     </section>
     </div>
   )

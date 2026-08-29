@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import { FaInstagram, FaYoutube, FaTiktok, FaFacebook, FaLinkedin } from 'react-icons/fa'
 import { ArrowRight } from 'lucide-react'
 import { useScroll, useTransform, motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 export function Footer() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -17,20 +18,19 @@ export function Footer() {
   const shadowOpacity = useTransform(scrollYProgress, [0, 1], [0.6, 0])
 
   const navLinks = [
-    { label: 'Início', href: '#inicio' },
-    { label: 'Quem Somos', href: '#quem-somos' },
-    { label: 'Universidades', href: '#universidades' },
-    { label: 'Curso Técnico', href: '#curso-tecnico' },
-    { label: 'Oportunidades', href: '#oportunidades' },
-    { label: 'Blog', href: '#blog' },
+    { label: 'Início', href: '/' },
+    { label: 'Quem Somos', href: '/quem-somos' },
+    { label: 'Universidades', href: '/universidades' },
+    { label: 'Curso Técnico', href: '/curso-tecnico' },
+    { label: 'Oportunidades', href: '/#oportunidades' },
+    { label: 'Blog', href: '/blog' },
   ]
 
   const instLinks = [
-    { label: 'Sobre nós', href: '#sobre-nos' },
-    { label: 'Voluntários', href: '#voluntarios' },
-    { label: 'Palestras realizadas', href: '#palestras' },
-    { label: 'Apoiadores', href: '#apoiadores' },
-    { label: 'Contato', href: '#contato' },
+    { label: 'Voluntários', href: '/voluntarios' },
+    { label: 'Palestras realizadas', href: '/palestras' },
+    { label: 'Apoiadores', href: '/#apoiadores' },
+    { label: 'Contato', href: '/#contato' },
   ]
 
   return (
@@ -69,9 +69,9 @@ export function Footer() {
                 <h3 className="font-bold text-gray-800">Navegação</h3>
                 <div className="flex flex-col gap-3">
                   {navLinks.map((link) => (
-                    <a key={link.label} href={link.href} className="text-sm text-gray-500 hover:text-primary transition-colors">
+                    <Link key={link.label} to={link.href} className="text-sm text-gray-500 hover:text-primary transition-colors">
                       {link.label}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -81,9 +81,9 @@ export function Footer() {
                 <h3 className="font-bold text-gray-800">Institucional</h3>
                 <div className="flex flex-col gap-3">
                   {instLinks.map((link) => (
-                    <a key={link.label} href={link.href} className="text-sm text-gray-500 hover:text-primary transition-colors">
+                    <Link key={link.label} to={link.href} className="text-sm text-gray-500 hover:text-primary transition-colors">
                       {link.label}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>

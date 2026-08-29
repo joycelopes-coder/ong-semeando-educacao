@@ -58,8 +58,8 @@ export function Header() {
       label: 'Curso Técnico', 
       href: '/curso-tecnico',
       subItems: [
-        { label: 'Senai', href: '/curso-tecnico#senai' },
-        { label: 'Etec', href: '/curso-tecnico#etec' }
+        { label: 'Senai', href: '/curso-tecnico/senai' },
+        { label: 'Etec', href: '/curso-tecnico/etec' }
       ]
     },
     { 
@@ -71,7 +71,7 @@ export function Header() {
         { label: 'Intercâmbio', href: '/#intercambio' }
       ]
     },
-    { label: 'Blog', href: '/#blog' }
+    { label: 'Blog', href: '/blog' }
   ]
 
   return (
