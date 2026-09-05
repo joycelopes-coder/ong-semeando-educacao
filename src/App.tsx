@@ -11,6 +11,11 @@ import { Volunteers } from './pages/Volunteers'
 import { Universities } from './pages/Universities'
 import { UFABC } from './pages/Universities/UFABC'
 import { CursosTecnicos } from './pages/CursosTecnicos'
+import { Oportunidades } from './pages/Oportunidades'
+import { Cursinhos } from './pages/Cursinhos'
+import { Vestibular } from './pages/Vestibular'
+import { Intercambio } from './pages/Intercambio'
+import { Midia } from './pages/Midia'
 import { UNIFESP } from './pages/Universities/UNIFESP'
 import { IF } from './pages/Universities/IF'
 import { UNESP } from './pages/Universities/UNESP'
@@ -55,11 +60,16 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/quem-somos" element={<AboutUs />} />
+          <Route path="/midia" element={<Midia />} />
           <Route path="/voluntarios" element={<Volunteers />} />
           <Route path="/palestras" element={<Palestras />} />
           <Route path="/curso-tecnico" element={<CursosTecnicos />} />
           <Route path="/curso-tecnico/senai" element={<Senai />} />
           <Route path="/curso-tecnico/etec" element={<Etec />} />
+          <Route path="/oportunidades" element={<Oportunidades />} />
+          <Route path="/cursinhos" element={<Cursinhos />} />
+          <Route path="/vestibular" element={<Vestibular />} />
+          <Route path="/intercambio" element={<Intercambio />} />
           <Route path="/universidades" element={<Universities />} />
           <Route path="/universidades/ufabc" element={<UFABC />} />
           <Route path="/universidades/unifesp" element={<UNIFESP />} />

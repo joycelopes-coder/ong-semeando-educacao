@@ -29,7 +29,7 @@ export function Footer() {
   const instLinks = [
     { label: 'Voluntários', href: '/voluntarios' },
     { label: 'Palestras realizadas', href: '/palestras' },
-    { label: 'Apoiadores', href: '/#apoiadores' },
+    { label: 'Semeando na Mídia', href: '/midia' },
     { label: 'Contato', href: '/#contato' },
   ]
 

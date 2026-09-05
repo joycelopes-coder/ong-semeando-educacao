@@ -13,6 +13,7 @@ module.exports = {
         },
         tertiary: {
           DEFAULT: '#594236',
+          hover: '#4a362e',
         }
       },
       fontFamily: {

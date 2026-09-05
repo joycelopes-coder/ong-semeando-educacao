@@ -1,14 +1,54 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useEffect, useState, useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 import { Button } from '@components/ui/Button'
 import { ArrowRight, UserPlus, Presentation, Heart, Building2 } from 'lucide-react'
 
 const stats = [
-  { icon: <UserPlus className="w-8 h-8 text-primary" strokeWidth={1.5} />, value: '+2.500', label: 'Estudantes impactados' },
-  { icon: <Presentation className="w-8 h-8 text-primary" strokeWidth={1.5} />, value: '+120', label: 'Palestras realizadas' },
-  { icon: <Heart className="w-8 h-8 text-primary" strokeWidth={1.5} />, value: '+45', label: 'Voluntários envolvidos' },
-  { icon: <Building2 className="w-8 h-8 text-primary" strokeWidth={1.5} />, value: '+30', label: 'Universidades parceiras' },
+  { icon: <UserPlus className="w-8 h-8 text-primary" strokeWidth={1.5} />, value: 2500, label: 'Estudantes impactados' },
+  { icon: <Presentation className="w-8 h-8 text-primary" strokeWidth={1.5} />, value: 120, label: 'Palestras realizadas' },
+  { icon: <Heart className="w-8 h-8 text-primary" strokeWidth={1.5} />, value: 45, label: 'Voluntários envolvidos' },
+  { icon: <Building2 className="w-8 h-8 text-primary" strokeWidth={1.5} />, value: 30, label: 'Universidades parceiras' },
 ]
+
+function AnimatedNumber({ value, delay = 0 }: { value: number, delay?: number }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-50px" })
+  const [display, setDisplay] = useState("0")
+
+  useEffect(() => {
+    if (isInView) {
+      let startTimestamp: number;
+      let animationFrameId: number;
+      const duration = 2000;
+      
+      const timeout = setTimeout(() => {
+        const step = (timestamp: number) => {
+          if (!startTimestamp) startTimestamp = timestamp;
+          const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+          // easeOutExpo
+          const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+          const current = Math.floor(easeProgress * value);
+          
+          setDisplay(Intl.NumberFormat('pt-BR').format(current));
+          
+          if (progress < 1) {
+            animationFrameId = requestAnimationFrame(step);
+          } else {
+            setDisplay(Intl.NumberFormat('pt-BR').format(value));
+          }
+        };
+        animationFrameId = requestAnimationFrame(step);
+      }, delay * 1000);
+      
+      return () => {
+        clearTimeout(timeout);
+        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      }
+    }
+  }, [isInView, value, delay])
+
+  return <span ref={ref}>{display}</span>
+}
 
 export function Impact() {
   return (
@@ -29,14 +69,16 @@ export function Impact() {
               key={index}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
               className="flex flex-col items-center text-center"
             >
               <div className="mb-4">
                 {stat.icon}
               </div>
-              <h4 className="text-3xl md:text-4xl font-bold text-primary mb-2">{stat.value}</h4>
+              <h4 className="text-3xl md:text-4xl font-bold text-primary mb-2">
+                +<AnimatedNumber value={stat.value} delay={index * 0.1} />
+              </h4>
               <p className="text-xs md:text-sm text-gray-700 font-medium max-w-[120px]">{stat.label}</p>
             </motion.div>
           ))}

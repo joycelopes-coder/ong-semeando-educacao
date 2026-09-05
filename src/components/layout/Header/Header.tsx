@@ -36,8 +36,7 @@ export function Header() {
       subItems: [
         { label: 'Voluntários', href: '/voluntarios' },
         { label: 'Palestras Realizadas', href: '/palestras' },
-        { label: 'Semeando na Mídia', href: '/#midia' },
-        { label: 'Apoiadores', href: '/#apoiadores' }
+        { label: 'Semeando na Mídia', href: '/midia' }
       ]
     },
     { 
@@ -64,11 +63,11 @@ export function Header() {
     },
     { 
       label: 'Oportunidades', 
-      href: '/#oportunidades',
+      href: '/oportunidades',
       subItems: [
-        { label: 'Cursinhos', href: '/#cursinhos' },
-        { label: 'Vestibular', href: '/#vestibular' },
-        { label: 'Intercâmbio', href: '/#intercambio' }
+        { label: 'Cursinhos', href: '/cursinhos' },
+        { label: 'Vestibular', href: '/vestibular' },
+        { label: 'Intercâmbio', href: '/intercambio' }
       ]
     },
     { label: 'Blog', href: '/blog' }

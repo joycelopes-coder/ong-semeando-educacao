@@ -26,17 +26,15 @@ export function Hero() {
 
       <section className="max-w-7xl mx-auto px-6 py-28 md:py-36 min-h-[85vh] flex flex-col md:flex-row items-center justify-between gap-16 lg:gap-24">
 
-      <motion.div 
-        initial={{ x: -30, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-xl flex flex-col gap-10 relative"
-      >
+      <div className="max-w-xl flex flex-col gap-10 relative">
         {/* Folha Decorativa (Topo esquerdo) */}
-        <img 
+        <motion.img 
+          initial={{ opacity: 0, y: -100, x: -100, rotate: 60, scale: 0.8 }}
+          animate={{ opacity: 1, y: 0, x: 0, rotate: 0, scale: 1 }}
+          transition={{ duration: 2, delay: 0.2, ease: "easeOut" }}
           src="/leaf-top-new.png" 
           alt="Folha decorativa" 
-          className="absolute -top-16 -left-20 w-32 md:w-40 h-auto object-contain pointer-events-none z-10 "
+          className="absolute -top-16 -left-20 w-32 md:w-40 h-auto object-contain pointer-events-none z-10"
         />
 
         <h1 className="text-6xl md:text-8xl font-extrabold text-primary leading-[1.15]">
@@ -51,7 +49,7 @@ export function Hero() {
           <Button icon={<ArrowRight size={18} />} className="w-full sm:w-auto py-4 text-lg">Conheça a ONG</Button>
           <Button variant="outline" icon={<ArrowRight size={18} />} className="w-full sm:w-auto py-4 text-lg">Quero ser voluntário</Button>
         </div>
-      </motion.div>
+      </div>
 
       <div className="flex-1 w-full max-w-lg relative">
 
