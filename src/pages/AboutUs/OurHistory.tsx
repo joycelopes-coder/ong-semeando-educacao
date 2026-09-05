@@ -54,7 +54,7 @@ export function OurHistory() {
         {/* Timeline Branch Background */}
         <div className="hidden md:block absolute inset-0 pointer-events-none z-0 overflow-visible">
           <img 
-            src="/timeline-branch.png" 
+            src="./timeline-branch.png" 
             alt="Linha do tempo" 
             className="w-full h-[150%] md:h-[120%] -mt-32 scale-110 md:scale-125 object-contain object-center opacity-90"
           />

@@ -49,7 +49,7 @@ export function UFABC() {
         <p>A UFABC é a diferentona das universidades! Nela você entra em um dos 4 cursos listados acima, chamados de Bacharelados e Licenciaturas Interdisciplinares, e após eles você pode escolher um dos cursos específicos, de acordo com o curso de ingresso.</p>
         {/* Placeholder for the courses image/list if it exists */}
         <div className="mt-6 rounded-xl overflow-hidden border border-gray-100 shadow-sm">
-           <img src="/universidades/image2.png" alt="Cursos UFABC" className="w-full h-auto" />
+           <img src="./universidades/image2.png" alt="Cursos UFABC" className="w-full h-auto" />
         </div>
       </Section>
 

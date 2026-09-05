@@ -89,7 +89,7 @@ export function Header() {
         >
         <div className="px-6 py-3 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <img src="/logo.png" alt="Semeando Educação Logo" className="h-10 w-auto object-contain" />
+            <img src="./logo.png" alt="Semeando Educação Logo" className="h-10 w-auto object-contain" />
             <div className="flex flex-col font-bold tracking-wide text-sm">
               <span className="text-primary leading-tight">SEMEANDO</span>
               <span className="text-tertiary leading-tight">EDUCAÇÃO</span>

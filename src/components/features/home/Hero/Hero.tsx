@@ -18,7 +18,7 @@ export function Hero() {
           animate={{ opacity: 1, rotate: 0, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.2 }}
           style={{ y: yParallax }}
-          src="/hero-branch-3.png" 
+          src="./hero-branch-3.png" 
           alt="Ramo decorativo" 
           className="absolute inset-0 w-full h-full object-contain origin-bottom-left"
         />
@@ -32,7 +32,7 @@ export function Hero() {
           initial={{ opacity: 0, y: -100, x: -100, rotate: 60, scale: 0.8 }}
           animate={{ opacity: 1, y: 0, x: 0, rotate: 0, scale: 1 }}
           transition={{ duration: 2, delay: 0.2, ease: "easeOut" }}
-          src="/leaf-top-new.png" 
+          src="./leaf-top-new.png" 
           alt="Folha decorativa" 
           className="absolute -top-16 -left-20 w-32 md:w-40 h-auto object-contain pointer-events-none z-10"
         />
@@ -65,7 +65,7 @@ export function Hero() {
           {/* Imagem de colagem ao fundo */}
           <div className="absolute inset-0 flex items-center justify-center -z-10">
             <img 
-              src="/studantes.png" 
+              src="./studantes.png" 
               alt="Colagem de fundo" 
               className="w-[120%] h-[120%] max-w-none object-contain"
             />

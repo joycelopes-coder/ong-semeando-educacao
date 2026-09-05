@@ -8,12 +8,12 @@ export function VolunteerCTA() {
     <section className="w-full relative overflow-hidden py-16 px-8 md:px-16 bg-gradient-to-br from-green-50/40 to-white border-t border-green-50 flex flex-col md:flex-row items-center justify-between gap-10 mt-10 rounded-t-3xl">
       {/* Background Leaves */}
       <img 
-        src="/leaf-branch.png" 
+        src="./leaf-branch.png" 
         alt="" 
         className="absolute -bottom-10 -left-10 w-64 md:w-80 opacity-50 pointer-events-none"
       />
       <img 
-        src="/leaf-branch.png" 
+        src="./leaf-branch.png" 
         alt="" 
         className="absolute -bottom-10 -right-10 w-64 md:w-80 opacity-50 rotate-90 pointer-events-none scale-x-[-1]"
       />

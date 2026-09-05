@@ -46,7 +46,7 @@ export function Footer() {
           {/* Decorative Branch (Right Edge) */}
           <div className="absolute right-0 bottom-16 translate-x-[30%] w-64 md:w-96 pointer-events-none opacity-80 z-0">
             <img 
-              src="/footer-branch.png" 
+              src="./footer-branch.png" 
               alt="Ramo decorativo" 
               className="w-full h-full object-contain mix-blend-multiply" 
             />
@@ -57,7 +57,7 @@ export function Footer() {
               
               {/* Logo e Info */}
               <div className="flex flex-col gap-6 md:w-1/4">
-                <img src="/logo.png" alt="Semeando Educação Logo" className="w-48 object-contain" />
+                <img src="./logo.png" alt="Semeando Educação Logo" className="w-48 object-contain" />
                 <div className="text-sm font-bold text-gray-800">
                   <p>ONG Semeando Educação®</p>
                   <p>CNPJ: 46.984.102/0001-90</p>
@@ -123,7 +123,7 @@ export function Footer() {
               <span>Desenvolvido por</span>
               <a href="https://luizsant.dev/" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-white flex items-center gap-2 transition-colors group">
                 <span className="underline decoration-white/30 underline-offset-2 group-hover:decoration-white">LUIZ SANT</span>
-                <img src="/luizsant-logo.png" alt="Luiz Sant Logo" className="w-5 h-5 object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity" />
+                <img src="./luizsant-logo.png" alt="Luiz Sant Logo" className="w-5 h-5 object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity" />
               </a>
             </div>
           </div>

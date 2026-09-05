@@ -22,7 +22,7 @@ export function AboutHero() {
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/equipe-semeando.jpg" 
+          src="./equipe-semeando.jpg" 
           alt="Equipe Semeando Educação" 
           className="w-full h-full object-cover object-center"
         />

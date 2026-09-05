@@ -13,7 +13,7 @@ export function About() {
         whileInView={{ opacity: 1, rotate: 0, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        src="/leaf.png" 
+        src="./leaf.png" 
         alt="Folha decorativa" 
         className="absolute top-0 -right-4 md:top-8 md:right-0 w-48 md:w-64 pointer-events-none z-30"
       />
@@ -40,7 +40,7 @@ export function About() {
         </div>
 
         <img 
-          src="/student_future.jpg" 
+          src="./student_future.jpg" 
           alt="Estudante olhando para o futuro" 
           className="w-full h-[400px] object-cover rounded-[2rem] shadow-xl"
         />

@@ -20,7 +20,7 @@ export function Home() {
           style={{ y: yParallax }}
         >
           <img 
-            src="/leaf-branch.png" 
+            src="./leaf-branch.png" 
             alt="Ramo decorativo" 
             className="-translate-y-1/2 -translate-x-[30%] w-full h-auto object-contain"
           />
