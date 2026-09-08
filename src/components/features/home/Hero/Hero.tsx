@@ -24,7 +24,7 @@ export function Hero() {
         />
       </div>
 
-      <section className="max-w-7xl mx-auto px-6 py-28 md:py-36 min-h-[85vh] flex flex-col md:flex-row items-center justify-between gap-16 lg:gap-24">
+      <section className="max-w-7xl mx-auto px-6 py-32 md:py-36 min-h-screen flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-24">
 
       <div className="max-w-xl flex flex-col gap-10 relative">
         {/* Folha Decorativa (Topo esquerdo) */}
