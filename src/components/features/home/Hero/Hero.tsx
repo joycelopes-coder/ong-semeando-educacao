@@ -24,9 +24,9 @@ export function Hero() {
         />
       </div>
 
-      <section className="max-w-7xl mx-auto px-6 py-32 md:py-36 min-h-screen flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-24">
+      <section className="max-w-7xl mx-auto px-6 py-12 lg:py-0 min-h-[calc(100svh-88px)] flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
 
-      <div className="max-w-xl flex flex-col gap-10 relative">
+      <div className="max-w-xl flex flex-col gap-6 lg:gap-8 relative z-10">
         {/* Folha Decorativa (Topo esquerdo) */}
         <motion.img 
           initial={{ opacity: 0, y: -100, x: -100, rotate: 60, scale: 0.8 }}
@@ -34,20 +34,20 @@ export function Hero() {
           transition={{ duration: 2, delay: 0.2, ease: "easeOut" }}
           src="./leaf-top-new.png" 
           alt="Folha decorativa" 
-          className="absolute -top-16 -left-20 w-32 md:w-40 h-auto object-contain pointer-events-none z-10"
+          className="absolute -top-12 -left-16 lg:-top-16 lg:-left-20 w-24 md:w-32 lg:w-40 h-auto object-contain pointer-events-none z-10"
         />
 
-        <h1 className="text-6xl md:text-8xl font-extrabold text-primary leading-[1.15]">
+        <h1 className="text-[clamp(3.5rem,7vw,6.5rem)] font-extrabold text-primary leading-[1.1]">
           Informar.<br/>
           <span className="text-secondary">Empoderar.</span><br/>
           <span className="text-tertiary">Engajar.</span>
         </h1>
-        <p className="text-gray-600 text-xl leading-relaxed max-w-md">
+        <p className="text-gray-600 text-lg md:text-xl leading-relaxed max-w-md">
           Aqui você encontra todas as informações para se preparar para vida depois do ensino médio.
         </p>
-        <div className="flex flex-col sm:flex-row items-center gap-6 mt-2">
-          <Button icon={<ArrowRight size={18} />} className="w-full sm:w-auto py-4 text-lg">Conheça a ONG</Button>
-          <Button variant="outline" icon={<ArrowRight size={18} />} className="w-full sm:w-auto py-4 text-lg">Quero ser voluntário</Button>
+        <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
+          <Button icon={<ArrowRight size={18} />} className="w-full sm:w-auto py-3 md:py-4 text-base md:text-lg">Conheça a ONG</Button>
+          <Button variant="outline" icon={<ArrowRight size={18} />} className="w-full sm:w-auto py-3 md:py-4 text-base md:text-lg">Quero ser voluntário</Button>
         </div>
       </div>
 
