@@ -10,7 +10,7 @@ export function Hero() {
   const yParallax = useTransform(scrollY, [0, 1000], [0, 300])
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full ">
       {/* Ramo Decorativo (Borda superior direita da tela) */}
       <div className="absolute top-48 md:top-64 right-0 translate-x-1/2 translate-y-12 md:translate-y-24 w-80 md:w-[36rem] aspect-square pointer-events-none -z-10">
         <motion.img 

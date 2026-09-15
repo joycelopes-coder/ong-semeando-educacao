@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 // @ts-ignore
 import Lenis from 'lenis'
+import { motion } from 'framer-motion'
 
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { Header } from '@components/layout/Header'
@@ -36,6 +37,19 @@ function ScrollToTop() {
   return null;
 }
 
+function PageTransition() {
+  const location = useLocation();
+  return (
+    <motion.div
+      key={location.pathname}
+      initial={{ opacity: 1 }}
+      animate={{ opacity: 0 }}
+      transition={{ duration: 0.8, ease: "easeInOut" }}
+      className="fixed inset-0 z-[9999] bg-white pointer-events-none"
+    />
+  );
+}
+
 export default function App() {
   useEffect(() => {
     const lenis = new Lenis({ duration: 1.2 })
@@ -52,6 +66,7 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
+      <PageTransition />
       <div className="min-h-screen flex flex-col relative overflow-hidden">
         {/* Background shape */}
         <div className="absolute top-0 right-0 w-[40vw] h-[80vh] bg-[#eaf4eb] rounded-bl-[10rem] -z-20"></div>
