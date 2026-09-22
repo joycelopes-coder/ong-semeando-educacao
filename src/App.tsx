@@ -53,6 +53,13 @@ function PageTransition() {
 export default function App() {
   useEffect(() => {
     const lenis = new Lenis({ duration: 1.2 })
+    
+    const handleLock = () => lenis.stop()
+    const handleUnlock = () => lenis.start()
+    
+    window.addEventListener('lock-scroll', handleLock)
+    window.addEventListener('unlock-scroll', handleUnlock)
+
     let rafId: number
     function loop(time: number) {
       // @ts-ignore
@@ -60,7 +67,12 @@ export default function App() {
       rafId = requestAnimationFrame(loop)
     }
     rafId = requestAnimationFrame(loop)
-    return () => cancelAnimationFrame(rafId)
+    return () => {
+      cancelAnimationFrame(rafId)
+      window.removeEventListener('lock-scroll', handleLock)
+      window.removeEventListener('unlock-scroll', handleUnlock)
+      lenis.destroy()
+    }
   }, [])
 
   return (
