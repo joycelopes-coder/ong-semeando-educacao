@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@components/ui/Button'
 import { ArrowRight, ChevronDown } from 'lucide-react'
+import { HamburgerButton } from '@components/ui/HamburgerButton'
 import { Link, useLocation } from 'react-router-dom'
 
 export function Header() {
   const location = useLocation()
   const [hidden, setHidden] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   useEffect(() => {
     let lastScrollY = window.scrollY;
 
@@ -90,7 +92,7 @@ export function Header() {
         <div className="px-6 py-3 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
             <img src="./logo.png" alt="Semeando Educação Logo" className="h-10 w-auto object-contain" />
-            <div className="flex flex-col font-bold tracking-wide text-sm">
+            <div className="hidden md:flex flex-col font-bold tracking-wide text-sm">
               <span className="text-primary leading-tight">SEMEANDO</span>
               <span className="text-tertiary leading-tight">EDUCAÇÃO</span>
             </div>
@@ -131,6 +133,13 @@ export function Header() {
 
           <div className="hidden md:block">
             <Button icon={<ArrowRight size={18} />}>Quero ajudar</Button>
+          </div>
+
+          <div className="md:hidden flex items-center justify-center">
+            <HamburgerButton 
+              isOpen={mobileMenuOpen} 
+              toggle={setMobileMenuOpen} 
+            />
           </div>
         </div>
       </motion.header>
