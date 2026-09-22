@@ -10,6 +10,14 @@ export function Header() {
   const [hidden, setHidden] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [expandedItem, setExpandedItem] = useState<string | null>(null)
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   useEffect(() => {
     let lastScrollY = window.scrollY;
 
@@ -53,9 +61,9 @@ export function Header() {
       label: 'Quem Somos',
       href: '/quem-somos',
       subItems: [
+        { label: 'Nossa História', href: '/quem-somos' },
         { label: 'Voluntários', href: '/voluntarios' },
-        { label: 'Palestras Realizadas', href: '/palestras' },
-        { label: 'Semeando na Mídia', href: '/midia' }
+        { label: 'Palestras', href: '/palestras' }
       ]
     },
     {
@@ -65,15 +73,15 @@ export function Header() {
         { label: 'UFABC', href: '/universidades/ufabc' },
         { label: 'UNIFESP', href: '/universidades/unifesp' },
         { label: 'IF', href: '/universidades/if' },
+        { label: 'UNESP', href: '/universidades/unesp' },
+        { label: 'UNICAMP', href: '/universidades/unicamp' },
         { label: 'UFSCAR', href: '/universidades/ufscar' },
         { label: 'ITA', href: '/universidades/ita' },
-        { label: 'USP', href: '/universidades/usp' },
-        { label: 'UNESP', href: '/universidades/unesp' },
-        { label: 'UNICAMP', href: '/universidades/unicamp' }
+        { label: 'USP', href: '/universidades/usp' }
       ]
     },
     {
-      label: 'Curso Técnico',
+      label: 'Cursos Técnicos',
       href: '/curso-tecnico',
       subItems: [
         { label: 'Senai', href: '/curso-tecnico/senai' },
@@ -108,14 +116,14 @@ export function Header() {
       <div className="fixed top-0 pt-6 left-0 right-0 w-full px-4 md:px-8 z-50 pointer-events-none">
         <motion.header
           variants={{
-            visible: { y: 0, opacity: 1, height: "64px" },
-            hidden: { y: "-150%", opacity: 1, height: "64px" },
+            visible: { y: 0, opacity: 1, height: isMobile ? "64px" : "auto" },
+            hidden: { y: "-150%", opacity: 1, height: isMobile ? "64px" : "auto" },
             open: { y: 0, opacity: 1, height: "calc(100dvh - 48px)" }
           }}
           initial="visible"
           animate={mobileMenuOpen ? "open" : (hidden ? "hidden" : "visible")}
           transition={{ duration: 0.4, ease: 'easeInOut' }}
-          className="max-w-7xl mx-auto bg-white shadow-lg pointer-events-auto overflow-hidden rounded-[32px] flex flex-col"
+          className="max-w-7xl mx-auto bg-white shadow-lg pointer-events-auto overflow-hidden md:overflow-visible rounded-[32px] flex flex-col"
         >
           <div className="px-6 py-3 flex items-center justify-between shrink-0">
             <Link to="/" className="flex items-center gap-2">
@@ -140,7 +148,7 @@ export function Header() {
                     </Link>
 
                     {item.subItems && (
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                         <div className="bg-white rounded-xl shadow-xl border border-gray-100 py-2 min-w-[200px] flex flex-col relative before:absolute before:-top-2 before:left-1/2 before:-translate-x-1/2 before:border-8 before:border-transparent before:border-b-white">
                           {item.subItems.map(sub => (
                             <Link
