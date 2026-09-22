@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { FaInstagram, FaYoutube, FaTiktok, FaFacebook, FaLinkedin } from 'react-icons/fa'
 import { ArrowRight } from 'lucide-react'
 import { useScroll, useTransform, motion } from 'framer-motion'
@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 
 export function Footer() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle')
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end end"]
@@ -42,9 +43,24 @@ export function Footer() {
       />
       
       <motion.div style={{ y }} className="w-full">
-        <footer className="relative bg-white border-t border-gray-100 pt-16 overflow-hidden">
+        <footer className="relative bg-white border-t border-gray-100 pt-12 md:pt-16 overflow-hidden flex flex-col h-[100dvh] md:h-auto">
+          {/* Video Background (Mobile Only) */}
+          <div className="absolute inset-0 w-full h-full z-0 md:hidden">
+            <video 
+              autoPlay 
+              loop 
+              muted 
+              playsInline 
+              className="w-full h-full object-cover"
+            >
+              <source src="./footer-bg-mobile.mp4" type="video/mp4" />
+            </video>
+            {/* Overlay para manter o texto preto legível sobre o vídeo */}
+            <div className="absolute inset-0 bg-white/70 backdrop-blur-[2px]"></div>
+          </div>
+
           {/* Decorative Branch (Right Edge) */}
-          <div className="absolute right-0 bottom-16 translate-x-[30%] w-64 md:w-96 pointer-events-none opacity-80 z-0">
+          <div className="hidden md:block absolute right-0 bottom-16 translate-x-[30%] w-64 md:w-96 pointer-events-none opacity-80 z-0">
             <img 
               src="./footer-branch.png" 
               alt="Ramo decorativo" 
@@ -52,11 +68,11 @@ export function Footer() {
             />
           </div>
 
-          <div className="max-w-7xl mx-auto px-6 mb-12 relative z-10">
-            <div className="flex flex-col md:flex-row justify-between items-start gap-12">
+          <div className="max-w-7xl mx-auto px-6 mb-12 relative z-10 flex-1 flex flex-col justify-center w-full">
+            <div className="flex flex-col md:flex-row justify-between items-center md:items-start text-center md:text-left gap-12">
               
               {/* Logo e Info */}
-              <div className="flex flex-col gap-6 md:w-1/4">
+              <div className="flex flex-col items-center md:items-start gap-6 md:w-1/4">
                 <img src="./logo.png" alt="Semeando Educação Logo" className="w-48 object-contain" />
                 <div className="text-sm font-bold text-gray-800">
                   <p>ONG Semeando Educação®</p>
@@ -65,9 +81,9 @@ export function Footer() {
               </div>
 
               {/* Navegação */}
-              <div className="flex flex-col gap-4">
+              <div className="hidden md:flex flex-col items-center md:items-start gap-4">
                 <h3 className="font-bold text-gray-800">Navegação</h3>
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col items-center md:items-start gap-3">
                   {navLinks.map((link) => (
                     <Link key={link.label} to={link.href} className="text-sm text-gray-500 hover:text-primary transition-colors">
                       {link.label}
@@ -77,9 +93,9 @@ export function Footer() {
               </div>
 
               {/* Institucional */}
-              <div className="flex flex-col gap-4">
+              <div className="hidden md:flex flex-col items-center md:items-start gap-4">
                 <h3 className="font-bold text-gray-800">Institucional</h3>
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col items-center md:items-start gap-3">
                   {instLinks.map((link) => (
                     <Link key={link.label} to={link.href} className="text-sm text-gray-500 hover:text-primary transition-colors">
                       {link.label}
@@ -89,27 +105,62 @@ export function Footer() {
               </div>
 
               {/* Redes Sociais */}
-              <div className="flex flex-col items-center gap-4">
+              <div className="flex flex-col items-center md:items-start gap-4">
                 <h3 className="font-bold text-gray-800">Redes Sociais</h3>
-                <div className="flex flex-col items-center gap-3">
-                  <a href="#" className="text-primary hover:text-primary-hover transition-colors"><FaInstagram size={20} /></a>
-                  <a href="#" className="text-primary hover:text-primary-hover transition-colors"><FaYoutube size={20} /></a>
-                  <a href="#" className="text-primary hover:text-primary-hover transition-colors"><FaTiktok size={20} /></a>
-                  <a href="#" className="text-primary hover:text-primary-hover transition-colors"><FaFacebook size={20} /></a>
-                  <a href="#" className="text-primary hover:text-primary-hover transition-colors"><FaLinkedin size={20} /></a>
+                <div className="flex flex-row md:flex-col items-center justify-center md:justify-start gap-6 md:gap-3">
+                  <a href="#" className="text-primary hover:text-primary-hover transition-colors"><FaInstagram size={22} /></a>
+                  <a href="#" className="text-primary hover:text-primary-hover transition-colors"><FaYoutube size={22} /></a>
+                  <a href="#" className="text-primary hover:text-primary-hover transition-colors"><FaTiktok size={22} /></a>
+                  <a href="#" className="text-primary hover:text-primary-hover transition-colors"><FaFacebook size={22} /></a>
+                  <a href="#" className="text-primary hover:text-primary-hover transition-colors"><FaLinkedin size={22} /></a>
                 </div>
               </div>
 
               {/* Vertical Divider (hidden on mobile) */}
               <div className="hidden md:block w-px h-32 bg-gray-200 mt-2"></div>
 
-              {/* CTA */}
-              <div className="flex flex-col gap-4 md:w-1/4">
-                <h3 className="font-bold text-lg text-gray-800 leading-tight">Faça parte dessa<br/>transformação!</h3>
-                <button className="bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-lg flex items-center justify-between gap-4 transition-colors w-fit font-medium text-sm">
-                  Quero ser voluntário
-                  <ArrowRight size={18} />
-                </button>
+              {/* CTA / Newsletter */}
+              <div className="flex flex-col items-center md:items-start gap-4 md:w-1/4 w-full">
+                <h3 className="font-bold text-lg text-gray-800 leading-tight">Fique por dentro das novidades</h3>
+                
+                {status === 'success' ? (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex flex-col items-center md:items-start gap-1 text-primary text-center md:text-left h-[48px] justify-center"
+                  >
+                    <span className="font-bold text-lg leading-none">Obrigado!</span>
+                    <span className="text-sm font-medium leading-none">Sua inscrição foi recebida com sucesso!</span>
+                  </motion.div>
+                ) : (
+                  <form 
+                    className="w-full relative flex items-center max-w-[280px]"
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      setStatus('loading');
+                      setTimeout(() => setStatus('success'), 1500); // Simula o tempo de envio
+                    }}
+                  >
+                    <input 
+                      type="email" 
+                      required
+                      placeholder="Endereço de e-mail" 
+                      className="w-full bg-gray-100 border-none rounded-lg py-3 pl-4 pr-14 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-primary transition-shadow placeholder:text-gray-400"
+                      disabled={status === 'loading'}
+                    />
+                    <button 
+                      type="submit"
+                      disabled={status === 'loading'}
+                      className="absolute right-1 top-1 bottom-1 aspect-square bg-primary hover:bg-primary-hover text-white rounded-md flex items-center justify-center transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+                    >
+                      {status === 'loading' ? (
+                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      ) : (
+                        <ArrowRight size={18} />
+                      )}
+                    </button>
+                  </form>
+                )}
               </div>
             </div>
           </div>
