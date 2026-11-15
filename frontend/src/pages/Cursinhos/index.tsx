@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { BookOpen, Target, Clock, AlertCircle, HelpCircle, GraduationCap, MapPin, Search, Lightbulb, Calendar } from 'lucide-react'
+import { BookOpen, Target, Clock, AlertCircle, HelpCircle, GraduationCap, Lightbulb, Calendar } from 'lucide-react'
+import { CursinhosMap } from './CursinhosMap'
 
 export function Cursinhos() {
   useEffect(() => {
@@ -112,53 +113,8 @@ export function Cursinhos() {
         </div>
       </div>
 
-      {/* Map Section */}
-      <div className="max-w-6xl mx-auto px-6 w-full mb-20">
-        <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden flex flex-col md:flex-row">
-          <div className="p-10 md:p-12 flex-1 flex flex-col justify-center">
-            <div className="w-14 h-14 bg-green-50 text-primary rounded-2xl flex items-center justify-center mb-6">
-              <MapPin size={28} />
-            </div>
-            <h2 className="text-3xl font-extrabold text-primary mb-4">Mapa de Cursinhos</h2>
-            <p className="text-gray-600 text-lg leading-relaxed mb-8">
-              O Semeando Educação reuniu vários cursinhos do estado de São Paulo para ajudar você a encontrar o mais próximo de sua casa!
-            </p>
-            
-            <div className="relative mb-8 max-w-sm">
-              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <Search size={18} className="text-gray-400" />
-              </div>
-              <input 
-                type="text" 
-                placeholder="Adicionar filtro (ex: bairro, cidade)" 
-                className="w-full bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-full focus:ring-primary focus:border-primary block pl-10 p-3"
-              />
-            </div>
-            
-            <div className="mt-auto">
-              <p className="text-sm font-medium text-gray-500 mb-3">Conhece algum cursinho que não está nesse mapa?</p>
-              <a 
-                href="https://www.instagram.com/semeandoeducacao/" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-primary font-bold hover:text-green-800 transition-colors"
-              >
-                Entre em contato conosco
-              </a>
-            </div>
-          </div>
-          
-          <div className="w-full md:w-1/2 bg-gray-100 min-h-[400px] relative border-l border-gray-100 flex items-center justify-center">
-            <div className="absolute inset-0 bg-map-pattern opacity-10"></div>
-            {/* Placeholder for the actual map integration */}
-            <div className="text-center p-8 z-10">
-              <MapPin size={48} className="mx-auto text-gray-300 mb-4" />
-              <p className="text-gray-500 font-medium">O mapa interativo será carregado aqui.</p>
-              <p className="text-xs text-gray-400 mt-2">Navegue pelas opções filtradas ao lado.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Interactive Map Section Component */}
+      <CursinhosMap />
       
       {/* Slogan */}
       <div className="w-full text-center pb-8 opacity-60">
