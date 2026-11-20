@@ -28,25 +28,74 @@ import { Palestras } from './pages/AboutUs/Palestras'
 import { Senai } from './pages/Senai'
 import { Etec } from './pages/Etec'
 import { Blog } from './pages/Blog'
+import { Admin } from './pages/Admin'
+import { trackSiteEvent } from './lib/analytics'
 
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
+    if (!pathname.startsWith('/adm')) {
+      trackSiteEvent({ type: 'PAGE_VIEW', path: pathname });
+    }
   }, [pathname]);
   return null;
 }
 
 function PageTransition() {
   const location = useLocation();
+  const isAdmin = location.pathname.startsWith('/adm');
   return (
     <motion.div
       key={location.pathname}
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
       transition={{ duration: 0.8, ease: "easeInOut" }}
-      className="fixed inset-0 z-[9999] bg-white pointer-events-none"
+      className={`fixed inset-0 z-[9999] ${isAdmin ? 'bg-[#0a0b0e]' : 'bg-white'} pointer-events-none`}
     />
+  );
+}
+
+function AppContent() {
+  const location = useLocation();
+  const isAdmin = location.pathname.startsWith('/adm');
+
+  return (
+    <div className="min-h-screen flex flex-col relative overflow-hidden">
+      {/* Background shape (oculto no painel admin) */}
+      {!isAdmin && (
+        <div className="absolute top-0 right-0 w-[40vw] h-[80vh] bg-[#eaf4eb] rounded-bl-[10rem] -z-20"></div>
+      )}
+
+      {!isAdmin && <Header />}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/quem-somos" element={<AboutUs />} />
+        <Route path="/midia" element={<Midia />} />
+        <Route path="/voluntarios" element={<Volunteers />} />
+        <Route path="/palestras" element={<Palestras />} />
+        <Route path="/curso-tecnico" element={<CursosTecnicos />} />
+        <Route path="/curso-tecnico/senai" element={<Senai />} />
+        <Route path="/curso-tecnico/etec" element={<Etec />} />
+        <Route path="/oportunidades" element={<Oportunidades />} />
+        <Route path="/cursinhos" element={<Cursinhos />} />
+        <Route path="/vestibular" element={<Vestibular />} />
+        <Route path="/intercambio" element={<Intercambio />} />
+        <Route path="/universidades" element={<Universities />} />
+        <Route path="/universidades/ufabc" element={<UFABC />} />
+        <Route path="/universidades/unifesp" element={<UNIFESP />} />
+        <Route path="/universidades/if" element={<IF />} />
+        <Route path="/universidades/unesp" element={<UNESP />} />
+        <Route path="/universidades/unicamp" element={<UNICAMP />} />
+        <Route path="/universidades/ufscar" element={<UFSCAR />} />
+        <Route path="/universidades/ita" element={<ITA />} />
+        <Route path="/universidades/usp" element={<USP />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/adm" element={<Admin />} />
+        <Route path="/admin" element={<Admin />} />
+      </Routes>
+      {!isAdmin && <Footer />}
+    </div>
   );
 }
 
@@ -79,37 +128,7 @@ export default function App() {
     <Router>
       <ScrollToTop />
       <PageTransition />
-      <div className="min-h-screen flex flex-col relative overflow-hidden">
-        {/* Background shape */}
-        <div className="absolute top-0 right-0 w-[40vw] h-[80vh] bg-[#eaf4eb] rounded-bl-[10rem] -z-20"></div>
-
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/quem-somos" element={<AboutUs />} />
-          <Route path="/midia" element={<Midia />} />
-          <Route path="/voluntarios" element={<Volunteers />} />
-          <Route path="/palestras" element={<Palestras />} />
-          <Route path="/curso-tecnico" element={<CursosTecnicos />} />
-          <Route path="/curso-tecnico/senai" element={<Senai />} />
-          <Route path="/curso-tecnico/etec" element={<Etec />} />
-          <Route path="/oportunidades" element={<Oportunidades />} />
-          <Route path="/cursinhos" element={<Cursinhos />} />
-          <Route path="/vestibular" element={<Vestibular />} />
-          <Route path="/intercambio" element={<Intercambio />} />
-          <Route path="/universidades" element={<Universities />} />
-          <Route path="/universidades/ufabc" element={<UFABC />} />
-          <Route path="/universidades/unifesp" element={<UNIFESP />} />
-          <Route path="/universidades/if" element={<IF />} />
-          <Route path="/universidades/unesp" element={<UNESP />} />
-          <Route path="/universidades/unicamp" element={<UNICAMP />} />
-          <Route path="/universidades/ufscar" element={<UFSCAR />} />
-          <Route path="/universidades/ita" element={<ITA />} />
-          <Route path="/universidades/usp" element={<USP />} />
-          <Route path="/blog" element={<Blog />} />
-        </Routes>
-        <Footer />
-      </div>
+      <AppContent />
     </Router>
   )
 }

@@ -124,3 +124,18 @@ model Cursinho {
 
   @@map("cursinho")
 }
+
+model SiteEvent {
+  id        String   @id @default(cuid())
+  type      String   // PAGE_VIEW | MAP_PIN_CLICK | MAP_SEARCH | MAP_FILTER
+  path      String
+  target    String?
+  visitorId String?
+  device    String?  // MOBILE | DESKTOP
+  referrer  String?
+  createdAt DateTime @default(now())
+
+  @@index([type])
+  @@index([createdAt])
+  @@map("site_event")
+}

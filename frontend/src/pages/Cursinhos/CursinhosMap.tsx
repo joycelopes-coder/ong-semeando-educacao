@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { MapPin, Search, Navigation, RotateCcw } from 'lucide-react'
+import { trackSiteEvent } from '../../lib/analytics'
 
 export interface Cursinho {
   id: string
@@ -782,6 +783,13 @@ export function CursinhosMap() {
         const pin = L.marker([lat, lon], { icon })
           .bindPopup(gerarCardHTML(marker))
           .closePopup()
+        pin.on('click', () => {
+          trackSiteEvent({
+            type: 'MAP_PIN_CLICK',
+            path: '/cursinhos',
+            target: marker.name,
+          })
+        })
         markerGroup.addLayer(pin)
       })
     }
@@ -820,6 +828,11 @@ export function CursinhosMap() {
 
     try {
       setBuscandoEndereco(true)
+      trackSiteEvent({
+        type: 'MAP_SEARCH',
+        path: '/cursinhos',
+        target: query,
+      })
       const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
         query + ', São Paulo, Brasil'
       )}&limit=1`
@@ -948,7 +961,14 @@ export function CursinhosMap() {
                     <button
                       key={opt.id}
                       type="button"
-                      onClick={() => setTipoCurso(opt.id)}
+                      onClick={() => {
+                        setTipoCurso(opt.id)
+                        trackSiteEvent({
+                          type: 'MAP_FILTER',
+                          path: '/cursinhos',
+                          target: opt.label,
+                        })
+                      }}
                       className={`w-full flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-xl border text-sm transition-all text-left ${
                         isSelected
                           ? 'bg-green-50 border-primary text-primary font-bold shadow-sm'
